@@ -131,6 +131,7 @@ Frank_Task/
     │   │   ├── BaseButton.vue
     │   │   ├── BaseCard.vue
     │   │   ├── BaseDropdown.vue
+    │   │   ├── BaseEmptyState.vue
     │   │   ├── BaseInput.vue
     │   │   ├── BaseModal.vue
     │   │   ├── BasePagination.vue
@@ -139,7 +140,13 @@ Frank_Task/
     │   │   ├── BaseSkeleton.vue
     │   │   ├── BaseTable.vue
     │   │   ├── BaseTabs.vue
+    │   │   ├── DataTable.vue
     │   │   └── PageHeader.vue
+    │   ├── dashboard/       # Dashboard-specific components
+    │   │   ├── DashboardCampaignCard.vue
+    │   │   ├── DashboardCompetitors.vue
+    │   │   ├── DashboardStatCard.vue
+    │   │   └── DashboardTeamRanking.vue
     │   ├── campaigns/
     │   │   └── CampaignCard.vue
     │   ├── products/
@@ -147,7 +154,8 @@ Frank_Task/
     │   └── layout/
     │       ├── TheHeader.vue
     │       ├── TheSidebar.vue
-    │       └── TheSidebarMobile.vue
+    │       ├── TheSidebarMobile.vue
+    │       └── TheBottomNav.vue
     ├── composables/
     │   ├── useAuth.js
     │   ├── useCampaigns.js
@@ -164,7 +172,8 @@ Frank_Task/
     │   ├── campaignService.js
     │   ├── competitorService.js
     │   ├── dashboardService.js
-    │   └── productService.js
+    │   ├── productService.js
+    │   └── teamService.js
     ├── stores/
     │   ├── auth.js
     │   ├── campaigns.js
@@ -196,11 +205,12 @@ Frank_Task/
 |---------|-------------|
 | **Dashboard** | KPIs, campaigns overview, team rankings, competitors table |
 | **Products** | Full CRUD with search, filter, sort, pagination |
-| **Campaign List** | Multiple tabs (All, Upcoming, In Progress, Completed, Archive) |
-| **Team Ranking** | Member cards with progress indicators |
+| **Campaigns** | Full CRUD with tabs (All, Upcoming, In Progress, Completed, Archive) |
+| **Team Members** | Full CRUD with filter, sort, pagination |
 | **Competitors Table** | Table with actions menu (View, Edit, Delete) |
 | **Sidebar** | Collapsible navigation with icons |
 | **Navbar** | Dropdowns for user, language, business selection |
+| **Mobile Bottom Nav** | Fixed bottom navigation for mobile devices |
 | **Responsive Design** | Desktop and mobile layouts |
 | **Authentication** | Login with route guards |
 
@@ -208,21 +218,30 @@ Frank_Task/
 
 | Component | Description |
 |-----------|-------------|
-| `BaseButton` | Button with variants (primary, secondary, danger, etc.) |
+| `BaseButton` | Button with variants (primary, secondary, danger, outline) |
 | `BaseInput` | Input field with label, validation, disabled state |
 | `BaseSelect` | Dropdown select component |
 | `BaseModal` | Modal dialog with header, body, footer slots |
 | `BasePagination` | Pagination with page numbers |
 | `BaseSkeleton` | Loading skeleton (text, circle, rect, card) |
-| `BaseTable` | Table component with sorting |
+| `BaseTable` | Table component with sorting and custom cells |
+| `DataTable` | Full-featured table with filters, pagination |
 | `BaseTabs` | Tab navigation component |
 | `BaseDropdown` | Dropdown menu with click-outside detection |
 | `BaseBadge` | Status badge with variants |
 | `BaseCard` | Card container component |
+| `BaseEmptyState` | Empty/placeholder state component |
 | `BaseSearch` | Search input with icon |
-| `ProductCard` | Product display card |
-| `CampaignCard` | Campaign display card |
 | `PageHeader` | Page header with title and actions |
+
+### Dashboard Components
+
+| Component | Description |
+|-----------|-------------|
+| `DashboardStatCard` | Stat card with icon, title, and value |
+| `DashboardCampaignCard` | Campaign card with progress and status |
+| `DashboardTeamRanking` | Team ranking section with sorting |
+| `DashboardCompetitors` | Competitors table section |
 
 ---
 
@@ -258,13 +277,10 @@ Frank_Task/
 |--------------------|--------|------------------------|
 | `/users`           | GET    | User authentication    |
 | `/stats`           | GET    | Dashboard statistics   |
-| `/campaigns`       | GET    | Campaign list          |
-| `/teamRankings`    | GET    | Team leaderboard       |
+| `/campaigns`       | GET/POST/PATCH/DELETE | Campaign CRUD |
+| `/teamRankings`    | GET/POST/PATCH/DELETE | Team member CRUD |
 | `/competitors`     | GET    | Competitor data        |
-| `/products`        | GET    | Product list           |
-| `/products`        | POST   | Create product         |
-| `/products/:id`    | PATCH  | Update product         |
-| `/products/:id`    | DELETE | Delete product         |
+| `/products`        | GET/POST/PATCH/DELETE | Product CRUD |
 | `/categories`      | GET    | Product categories     |
 
 ---
@@ -293,36 +309,21 @@ Frank_Task/
 
 | Breakpoint | Width        | Layout         |
 |------------|--------------|----------------|
-| Mobile     | < 640px      | Single column, mobile sidebar |
-| Tablet     | 640px - 1024px | Adaptive layout |
-| Desktop    | > 1024px     | Full sidebar, multi-column |
+| Mobile     | < 1024px     | Bottom nav, simplified views |
+| Desktop    | ≥ 1024px     | Full sidebar, multi-column |
 
 ### Mobile Features
-- Hamburger menu for sidebar
+- Fixed bottom navigation bar (Home, Campaigns, Review, Members, More)
+- Establishment search in header
+- 2-column stat cards (4 on desktop)
+- Horizontal scrollable tabs
 - Touch-friendly buttons and inputs
 - No horizontal scrolling
 - Responsive tables with horizontal scroll
 
----
-
-## ✅ Acceptance Criteria
-
-| Requirement | Status |
-|-------------|--------|
-| Matches Figma design (desktop & mobile) | ✅ |
-| Uses reusable components | ✅ |
-| Uses composable → store → service structure | ✅ |
-| Search, filter, sort, pagination work | ✅ |
-| Product create/edit works with fake API | ✅ |
-| Vue 3 (Composition API) | ✅ |
-| Tailwind CSS v4 | ✅ |
-| Pinia state management | ✅ |
-| Axios via service layer only | ✅ |
-| Fake API (json-server) | ✅ |
-| Responsive Desktop + Mobile UI | ✅ |
-
----
-
-## 📄 License
-
-MIT License
+### Desktop Features
+- Collapsible sidebar navigation
+- Full header with dropdowns
+- 4-column stat cards
+- Team ranking section
+- Competitors table section
