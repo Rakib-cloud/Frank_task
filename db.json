@@ -1,0 +1,868 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "admin",
+      "name": "Forhad Sheikh",
+      "email": "forhad@myfrank.com",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Forhad",
+      "role": "Manager"
+    }
+  ],
+  "stats": {
+    "totalReviews": 0,
+    "averageRating": 0,
+    "activeMembers": 0,
+    "totalCampaigns": 0
+  },
+  "campaigns": [
+    {
+      "id": 1,
+      "name": "July Review Challenge",
+      "status": "in_progress",
+      "reward": "€50 Gift Card",
+      "rewardCount": 3,
+      "topPerformer": {
+        "name": "Paul Bartel",
+        "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Paul"
+      },
+      "progress": 70,
+      "currentReviews": 7,
+      "targetReviews": 10,
+      "startDate": "2025-08-16",
+      "endDate": "2025-08-30",
+      "daysLeft": 5
+    },
+    {
+      "id": 2,
+      "name": "August Sales Push",
+      "status": "in_progress",
+      "reward": "€50 Gift Card",
+      "rewardCount": 0,
+      "topPerformer": null,
+      "progress": 45,
+      "currentReviews": 9,
+      "targetReviews": 20,
+      "startDate": "2025-08-01",
+      "endDate": "2025-08-31",
+      "daysLeft": 12
+    },
+    {
+      "id": 3,
+      "name": "Summer Boost Campaign",
+      "status": "upcoming",
+      "reward": "€100 Gift Card",
+      "rewardCount": 5,
+      "topPerformer": null,
+      "progress": 0,
+      "currentReviews": 0,
+      "targetReviews": 20,
+      "startDate": "2025-09-01",
+      "endDate": "2025-09-30",
+      "daysLeft": 21
+    },
+    {
+      "id": 4,
+      "name": "Spring Review Drive",
+      "status": "completed",
+      "reward": "€30 Gift Card",
+      "rewardCount": 2,
+      "topPerformer": {
+        "name": "Sarah Chen",
+        "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah"
+      },
+      "progress": 100,
+      "currentReviews": 15,
+      "targetReviews": 15,
+      "startDate": "2025-03-01",
+      "endDate": "2025-03-31",
+      "daysLeft": 0
+    },
+    {
+      "id": 5,
+      "name": "Winter Campaign",
+      "status": "archive",
+      "reward": "€25 Gift Card",
+      "rewardCount": 1,
+      "topPerformer": null,
+      "progress": 100,
+      "currentReviews": 10,
+      "targetReviews": 10,
+      "startDate": "2024-12-01",
+      "endDate": "2024-12-31",
+      "daysLeft": 0
+    },
+    {
+      "id": 6,
+      "name": "Q4 Review Sprint",
+      "status": "in_progress",
+      "reward": "€75 Gift Card",
+      "rewardCount": 4,
+      "topPerformer": {
+        "name": "Mike Johnson",
+        "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Mike"
+      },
+      "progress": 55,
+      "currentReviews": 11,
+      "targetReviews": 20,
+      "startDate": "2025-08-10",
+      "endDate": "2025-09-10",
+      "daysLeft": 18
+    },
+    {
+      "id": 7,
+      "name": "New Year Kickoff",
+      "status": "upcoming",
+      "reward": "€200 Gift Card",
+      "rewardCount": 10,
+      "topPerformer": null,
+      "progress": 0,
+      "currentReviews": 0,
+      "targetReviews": 50,
+      "startDate": "2026-01-01",
+      "endDate": "2026-01-31",
+      "daysLeft": 120
+    },
+    {
+      "id": 8,
+      "name": "Customer Appreciation",
+      "status": "completed",
+      "reward": "€40 Gift Card",
+      "rewardCount": 3,
+      "topPerformer": {
+        "name": "Emma Wilson",
+        "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Emma"
+      },
+      "progress": 100,
+      "currentReviews": 25,
+      "targetReviews": 25,
+      "startDate": "2025-02-01",
+      "endDate": "2025-02-28",
+      "daysLeft": 0
+    },
+    {
+      "id": 9,
+      "name": "Holiday Special",
+      "status": "archive",
+      "reward": "€60 Gift Card",
+      "rewardCount": 2,
+      "topPerformer": {
+        "name": "John Smith",
+        "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=John"
+      },
+      "progress": 100,
+      "currentReviews": 30,
+      "targetReviews": 30,
+      "startDate": "2024-11-15",
+      "endDate": "2024-12-15",
+      "daysLeft": 0
+    },
+    {
+      "id": 10,
+      "name": "Flash Review Weekend",
+      "status": "in_progress",
+      "reward": "€20 Gift Card",
+      "rewardCount": 1,
+      "topPerformer": null,
+      "progress": 30,
+      "currentReviews": 3,
+      "targetReviews": 10,
+      "startDate": "2025-08-20",
+      "endDate": "2025-08-25",
+      "daysLeft": 3
+    },
+    {
+      "id": 11,
+      "name": "Monthly Challenge Aug",
+      "status": "in_progress",
+      "reward": "€35 Gift Card",
+      "rewardCount": 2,
+      "topPerformer": {
+        "name": "Lisa Brown",
+        "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Lisa"
+      },
+      "progress": 80,
+      "currentReviews": 16,
+      "targetReviews": 20,
+      "startDate": "2025-08-01",
+      "endDate": "2025-08-31",
+      "daysLeft": 8
+    },
+    {
+      "id": 12,
+      "name": "Team Building Reviews",
+      "status": "upcoming",
+      "reward": "€150 Gift Card",
+      "rewardCount": 8,
+      "topPerformer": null,
+      "progress": 0,
+      "currentReviews": 0,
+      "targetReviews": 40,
+      "startDate": "2025-10-01",
+      "endDate": "2025-10-31",
+      "daysLeft": 45
+    },
+    {
+      "id": 13,
+      "name": "Spring Fling",
+      "status": "completed",
+      "reward": "€45 Gift Card",
+      "rewardCount": 3,
+      "topPerformer": {
+        "name": "David Lee",
+        "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=David"
+      },
+      "progress": 100,
+      "currentReviews": 18,
+      "targetReviews": 18,
+      "startDate": "2025-04-01",
+      "endDate": "2025-04-30",
+      "daysLeft": 0
+    },
+    {
+      "id": 14,
+      "name": "Black Friday Push",
+      "status": "archive",
+      "reward": "€80 Gift Card",
+      "rewardCount": 5,
+      "topPerformer": {
+        "name": "Anna White",
+        "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Anna"
+      },
+      "progress": 100,
+      "currentReviews": 35,
+      "targetReviews": 35,
+      "startDate": "2024-11-20",
+      "endDate": "2024-11-30",
+      "daysLeft": 0
+    },
+    {
+      "id": 15,
+      "name": "VIP Customer Campaign",
+      "status": "in_progress",
+      "reward": "€90 Gift Card",
+      "rewardCount": 6,
+      "topPerformer": {
+        "name": "Chris Martin",
+        "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Chris"
+      },
+      "progress": 60,
+      "currentReviews": 12,
+      "targetReviews": 20,
+      "startDate": "2025-08-05",
+      "endDate": "2025-09-05",
+      "daysLeft": 15
+    }
+  ],
+  "teamRankings": [
+    {
+      "id": 1,
+      "name": "Sarah Chen",
+      "email": "sarah.chen@myfrank.com",
+      "role": "Senior Reviewer",
+      "department": "Sales",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah",
+      "rating": 4.9,
+      "reviews": 145,
+      "progress": 90,
+      "status": "active",
+      "joinedAt": "2024-01-15"
+    },
+    {
+      "id": 2,
+      "name": "Mike Johnson",
+      "email": "mike.johnson@myfrank.com",
+      "role": "Team Lead",
+      "department": "Marketing",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Mike",
+      "rating": 4.8,
+      "reviews": 132,
+      "progress": 85,
+      "status": "active",
+      "joinedAt": "2024-02-10"
+    },
+    {
+      "id": 3,
+      "name": "Emma Wilson",
+      "email": "emma.wilson@myfrank.com",
+      "role": "Reviewer",
+      "department": "Sales",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Emma",
+      "rating": 4.7,
+      "reviews": 98,
+      "progress": 75,
+      "status": "active",
+      "joinedAt": "2024-03-05"
+    },
+    {
+      "id": 4,
+      "name": "John Smith",
+      "email": "john.smith@myfrank.com",
+      "role": "Senior Reviewer",
+      "department": "Support",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=John",
+      "rating": 4.6,
+      "reviews": 87,
+      "progress": 70,
+      "status": "active",
+      "joinedAt": "2024-01-20"
+    },
+    {
+      "id": 5,
+      "name": "Lisa Brown",
+      "email": "lisa.brown@myfrank.com",
+      "role": "Reviewer",
+      "department": "Marketing",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Lisa",
+      "rating": 4.5,
+      "reviews": 76,
+      "progress": 65,
+      "status": "active",
+      "joinedAt": "2024-04-12"
+    },
+    {
+      "id": 6,
+      "name": "David Lee",
+      "email": "david.lee@myfrank.com",
+      "role": "Junior Reviewer",
+      "department": "Sales",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=David",
+      "rating": 4.4,
+      "reviews": 54,
+      "progress": 55,
+      "status": "active",
+      "joinedAt": "2024-05-08"
+    },
+    {
+      "id": 7,
+      "name": "Anna White",
+      "email": "anna.white@myfrank.com",
+      "role": "Team Lead",
+      "department": "Support",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Anna",
+      "rating": 4.8,
+      "reviews": 121,
+      "progress": 80,
+      "status": "active",
+      "joinedAt": "2024-02-28"
+    },
+    {
+      "id": 8,
+      "name": "Chris Martin",
+      "email": "chris.martin@myfrank.com",
+      "role": "Senior Reviewer",
+      "department": "Marketing",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Chris",
+      "rating": 4.3,
+      "reviews": 67,
+      "progress": 60,
+      "status": "active",
+      "joinedAt": "2024-06-15"
+    },
+    {
+      "id": 9,
+      "name": "Jessica Taylor",
+      "email": "jessica.taylor@myfrank.com",
+      "role": "Reviewer",
+      "department": "Sales",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Jessica",
+      "rating": 4.2,
+      "reviews": 45,
+      "progress": 50,
+      "status": "active",
+      "joinedAt": "2024-07-01"
+    },
+    {
+      "id": 10,
+      "name": "Robert Garcia",
+      "email": "robert.garcia@myfrank.com",
+      "role": "Junior Reviewer",
+      "department": "Support",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Robert",
+      "rating": 4.1,
+      "reviews": 32,
+      "progress": 40,
+      "status": "active",
+      "joinedAt": "2024-07-20"
+    },
+    {
+      "id": 11,
+      "name": "Michelle Davis",
+      "email": "michelle.davis@myfrank.com",
+      "role": "Reviewer",
+      "department": "Marketing",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Michelle",
+      "rating": 4.0,
+      "reviews": 28,
+      "progress": 35,
+      "status": "inactive",
+      "joinedAt": "2024-03-18"
+    },
+    {
+      "id": 12,
+      "name": "Kevin Anderson",
+      "email": "kevin.anderson@myfrank.com",
+      "role": "Junior Reviewer",
+      "department": "Sales",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Kevin",
+      "rating": 3.9,
+      "reviews": 21,
+      "progress": 30,
+      "status": "active",
+      "joinedAt": "2024-08-05"
+    },
+    {
+      "id": 13,
+      "name": "Amanda Thompson",
+      "email": "amanda.thompson@myfrank.com",
+      "role": "Senior Reviewer",
+      "department": "Support",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Amanda",
+      "rating": 4.7,
+      "reviews": 110,
+      "progress": 82,
+      "status": "active",
+      "joinedAt": "2024-01-25"
+    },
+    {
+      "id": 14,
+      "name": "Brian Miller",
+      "email": "brian.miller@myfrank.com",
+      "role": "Team Lead",
+      "department": "Sales",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Brian",
+      "rating": 4.6,
+      "reviews": 95,
+      "progress": 78,
+      "status": "active",
+      "joinedAt": "2024-02-14"
+    },
+    {
+      "id": 15,
+      "name": "Rachel Green",
+      "email": "rachel.green@myfrank.com",
+      "role": "Reviewer",
+      "department": "Marketing",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Rachel",
+      "rating": 4.4,
+      "reviews": 58,
+      "progress": 58,
+      "status": "inactive",
+      "joinedAt": "2024-04-30"
+    }
+  ],
+  "competitors": [
+    {
+      "id": 1,
+      "name": "Guy Hawkins",
+      "address": "94 Rue des Dames, 75017 Paris, France",
+      "rating": 3.9,
+      "totalReviews": 1393,
+      "status": -0.0,
+      "statusType": "neutral"
+    },
+    {
+      "id": 2,
+      "name": "Dianne Russell",
+      "address": "94 Rue des Dames, 75017 Paris, France",
+      "rating": 4.7,
+      "totalReviews": 1393,
+      "status": 9.7,
+      "statusType": "positive"
+    },
+    {
+      "id": 3,
+      "name": "Kristin Watson",
+      "address": "94 Rue des Dames, 75017 Paris, France",
+      "rating": 4.7,
+      "totalReviews": 1393,
+      "status": 9.7,
+      "statusType": "positive"
+    },
+    {
+      "id": 4,
+      "name": "Brooklyn Simmons",
+      "address": "94 Rue des Dames, 75017 Paris, France",
+      "rating": 3.7,
+      "totalReviews": 456,
+      "status": -3.9,
+      "statusType": "negative"
+    },
+    {
+      "id": 5,
+      "name": "Darlene Robertson",
+      "address": "94 Rue des Dames, 75017 Paris, France",
+      "rating": 4.7,
+      "totalReviews": 1393,
+      "status": 9.7,
+      "statusType": "positive"
+    },
+    {
+      "id": 6,
+      "name": "Jenny Wilson",
+      "address": "94 Rue des Dames, 75017 Paris, France",
+      "rating": 4.7,
+      "totalReviews": 1393,
+      "status": -3.9,
+      "statusType": "negative"
+    },
+    {
+      "id": 7,
+      "name": "Savannah Nguyen",
+      "address": "94 Rue des Dames, 75017 Paris, France",
+      "rating": 4.7,
+      "totalReviews": 1393,
+      "status": -3.9,
+      "statusType": "negative"
+    },
+    {
+      "id": 8,
+      "name": "Albert Flores",
+      "address": "94 Rue des Dames, 75017 Paris, France",
+      "rating": 4.7,
+      "totalReviews": 1393,
+      "status": -3.9,
+      "statusType": "negative"
+    }
+  ],
+  "categories": [
+    { "id": 1, "name": "Electronics", "value": "electronics" },
+    { "id": 2, "name": "Furniture", "value": "furniture" },
+    { "id": 3, "name": "Accessories", "value": "accessories" },
+    { "id": 4, "name": "Clothing", "value": "clothing" },
+    { "id": 5, "name": "Sports", "value": "sports" }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "MacBook Pro 16\"",
+      "sku": "MBPRO-16-001",
+      "category": "electronics",
+      "price": 2499.99,
+      "stock": 45,
+      "status": "active",
+      "image": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=100&h=100&fit=crop",
+      "createdAt": "2025-01-15"
+    },
+    {
+      "id": 2,
+      "name": "iPhone 15 Pro Max",
+      "sku": "IPHONE-15PM-002",
+      "category": "electronics",
+      "price": 1199.99,
+      "stock": 120,
+      "status": "active",
+      "image": "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=100&h=100&fit=crop",
+      "createdAt": "2025-01-14"
+    },
+    {
+      "id": 3,
+      "name": "Ergonomic Office Chair",
+      "sku": "CHAIR-ERG-003",
+      "category": "furniture",
+      "price": 349.99,
+      "stock": 78,
+      "status": "active",
+      "image": "https://images.unsplash.com/photo-1580480055273-228ff5388ef8?w=100&h=100&fit=crop",
+      "createdAt": "2025-01-13"
+    },
+    {
+      "id": 4,
+      "name": "Standing Desk Pro",
+      "sku": "DESK-STD-004",
+      "category": "furniture",
+      "price": 599.99,
+      "stock": 32,
+      "status": "active",
+      "image": "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?w=100&h=100&fit=crop",
+      "createdAt": "2025-01-12"
+    },
+    {
+      "id": 5,
+      "name": "Leather Wallet",
+      "sku": "WALLET-LTH-005",
+      "category": "accessories",
+      "price": 79.99,
+      "stock": 200,
+      "status": "active",
+      "image": "https://images.unsplash.com/photo-1627123424574-724758594e93?w=100&h=100&fit=crop",
+      "createdAt": "2025-01-11"
+    },
+    {
+      "id": 6,
+      "name": "Wireless Earbuds Pro",
+      "sku": "EARBUDS-WL-006",
+      "category": "electronics",
+      "price": 249.99,
+      "stock": 0,
+      "status": "out_of_stock",
+      "image": "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=100&h=100&fit=crop",
+      "createdAt": "2025-01-10"
+    },
+    {
+      "id": 7,
+      "name": "Smart Watch Ultra",
+      "sku": "WATCH-SMT-007",
+      "category": "electronics",
+      "price": 799.99,
+      "stock": 56,
+      "status": "active",
+      "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=100&h=100&fit=crop",
+      "createdAt": "2025-01-09"
+    },
+    {
+      "id": 8,
+      "name": "Premium Sunglasses",
+      "sku": "SUNGLASS-PRM-008",
+      "category": "accessories",
+      "price": 159.99,
+      "stock": 89,
+      "status": "active",
+      "image": "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=100&h=100&fit=crop",
+      "createdAt": "2025-01-08"
+    },
+    {
+      "id": 9,
+      "name": "Gaming Keyboard RGB",
+      "sku": "KEYBD-GMG-009",
+      "category": "electronics",
+      "price": 149.99,
+      "stock": 67,
+      "status": "active",
+      "image": "https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?w=100&h=100&fit=crop",
+      "createdAt": "2025-01-07"
+    },
+    {
+      "id": 10,
+      "name": "Bookshelf Modern",
+      "sku": "SHELF-MOD-010",
+      "category": "furniture",
+      "price": 289.99,
+      "stock": 23,
+      "status": "active",
+      "image": "https://images.unsplash.com/photo-1594620302200-9a762244a156?w=100&h=100&fit=crop",
+      "createdAt": "2025-01-06"
+    },
+    {
+      "id": 11,
+      "name": "Wireless Mouse Pro",
+      "sku": "MOUSE-WL-011",
+      "category": "electronics",
+      "price": 89.99,
+      "stock": 145,
+      "status": "active",
+      "image": "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=100&h=100&fit=crop",
+      "createdAt": "2025-01-05"
+    },
+    {
+      "id": 12,
+      "name": "Laptop Backpack",
+      "sku": "BACKPK-LTP-012",
+      "category": "accessories",
+      "price": 129.99,
+      "stock": 78,
+      "status": "active",
+      "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=100&h=100&fit=crop",
+      "createdAt": "2025-01-04"
+    },
+    {
+      "id": 13,
+      "name": "4K Monitor 27\"",
+      "sku": "MONITOR-4K-013",
+      "category": "electronics",
+      "price": 449.99,
+      "stock": 34,
+      "status": "active",
+      "image": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=100&h=100&fit=crop",
+      "createdAt": "2025-01-03"
+    },
+    {
+      "id": 14,
+      "name": "Coffee Table Oak",
+      "sku": "TABLE-COF-014",
+      "category": "furniture",
+      "price": 399.99,
+      "stock": 18,
+      "status": "active",
+      "image": "https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc?w=100&h=100&fit=crop",
+      "createdAt": "2025-01-02"
+    },
+    {
+      "id": 15,
+      "name": "Bluetooth Speaker",
+      "sku": "SPEAKER-BT-015",
+      "category": "electronics",
+      "price": 179.99,
+      "stock": 0,
+      "status": "out_of_stock",
+      "image": "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=100&h=100&fit=crop",
+      "createdAt": "2025-01-01"
+    },
+    {
+      "id": 16,
+      "name": "Denim Jacket Classic",
+      "sku": "JACKET-DNM-016",
+      "category": "clothing",
+      "price": 89.99,
+      "stock": 56,
+      "status": "active",
+      "image": "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=100&h=100&fit=crop",
+      "createdAt": "2024-12-30"
+    },
+    {
+      "id": 17,
+      "name": "Running Shoes Pro",
+      "sku": "SHOES-RUN-017",
+      "category": "sports",
+      "price": 159.99,
+      "stock": 89,
+      "status": "active",
+      "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=100&h=100&fit=crop",
+      "createdAt": "2024-12-29"
+    },
+    {
+      "id": 18,
+      "name": "Yoga Mat Premium",
+      "sku": "YOGA-MAT-018",
+      "category": "sports",
+      "price": 49.99,
+      "stock": 234,
+      "status": "active",
+      "image": "https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?w=100&h=100&fit=crop",
+      "createdAt": "2024-12-28"
+    },
+    {
+      "id": 19,
+      "name": "Cotton T-Shirt",
+      "sku": "TSHIRT-COT-019",
+      "category": "clothing",
+      "price": 29.99,
+      "stock": 456,
+      "status": "active",
+      "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=100&h=100&fit=crop",
+      "createdAt": "2024-12-27"
+    },
+    {
+      "id": 20,
+      "name": "Dumbbells Set",
+      "sku": "DUMBBELL-SET-020",
+      "category": "sports",
+      "price": 199.99,
+      "stock": 45,
+      "status": "active",
+      "image": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=100&h=100&fit=crop",
+      "createdAt": "2024-12-26"
+    },
+    {
+      "id": 21,
+      "name": "Winter Coat",
+      "sku": "COAT-WIN-021",
+      "category": "clothing",
+      "price": 249.99,
+      "stock": 34,
+      "status": "active",
+      "image": "https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=100&h=100&fit=crop",
+      "createdAt": "2024-12-25"
+    },
+    {
+      "id": 22,
+      "name": "Tennis Racket Pro",
+      "sku": "TENNIS-RAC-022",
+      "category": "sports",
+      "price": 179.99,
+      "stock": 0,
+      "status": "inactive",
+      "image": "https://images.unsplash.com/photo-1617083934555-9ccdf4930fd2?w=100&h=100&fit=crop",
+      "createdAt": "2024-12-24"
+    },
+    {
+      "id": 23,
+      "name": "Bedside Table",
+      "sku": "TABLE-BED-023",
+      "category": "furniture",
+      "price": 149.99,
+      "stock": 67,
+      "status": "active",
+      "image": "https://images.unsplash.com/photo-1532372320572-cda25653a26d?w=100&h=100&fit=crop",
+      "createdAt": "2024-12-23"
+    },
+    {
+      "id": 24,
+      "name": "USB-C Hub",
+      "sku": "HUB-USBC-024",
+      "category": "electronics",
+      "price": 69.99,
+      "stock": 189,
+      "status": "active",
+      "image": "https://images.unsplash.com/photo-1625842268584-8f3296236761?w=100&h=100&fit=crop",
+      "createdAt": "2024-12-22"
+    },
+    {
+      "id": 25,
+      "name": "Silk Scarf",
+      "sku": "SCARF-SLK-025",
+      "category": "accessories",
+      "price": 59.99,
+      "stock": 123,
+      "status": "active",
+      "image": "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=100&h=100&fit=crop",
+      "createdAt": "2024-12-21"
+    },
+    {
+      "id": 26,
+      "name": "iPad Pro 12.9\"",
+      "sku": "IPAD-PRO-026",
+      "category": "electronics",
+      "price": 1099.99,
+      "stock": 28,
+      "status": "active",
+      "image": "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=100&h=100&fit=crop",
+      "createdAt": "2024-12-20"
+    },
+    {
+      "id": 27,
+      "name": "Dining Chair Set",
+      "sku": "CHAIR-DIN-027",
+      "category": "furniture",
+      "price": 449.99,
+      "stock": 15,
+      "status": "active",
+      "image": "https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=100&h=100&fit=crop",
+      "createdAt": "2024-12-19"
+    },
+    {
+      "id": 28,
+      "name": "Fitness Tracker",
+      "sku": "TRACKER-FIT-028",
+      "category": "sports",
+      "price": 129.99,
+      "stock": 78,
+      "status": "active",
+      "image": "https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?w=100&h=100&fit=crop",
+      "createdAt": "2024-12-18"
+    },
+    {
+      "id": 29,
+      "name": "Linen Shirt",
+      "sku": "SHIRT-LIN-029",
+      "category": "clothing",
+      "price": 69.99,
+      "stock": 145,
+      "status": "active",
+      "image": "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=100&h=100&fit=crop",
+      "createdAt": "2024-12-17"
+    },
+    {
+      "id": 30,
+      "name": "Webcam HD",
+      "sku": "WEBCAM-HD-030",
+      "category": "electronics",
+      "price": 99.99,
+      "stock": 234,
+      "status": "active",
+      "image": "https://images.unsplash.com/photo-1587826080692-f439cd0b70da?w=100&h=100&fit=crop",
+      "createdAt": "2024-12-16"
+    }
+  ]
+}
