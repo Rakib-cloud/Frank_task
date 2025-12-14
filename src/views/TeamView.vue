@@ -382,7 +382,7 @@ onMounted(() => {
           class="p-4 flex items-center gap-4 hover:bg-slate-50 transition-colors"
         >
           <!-- Rank -->
-          <div class="w-10 h-10 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
+          <div class="w-10 h-10 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold text-sm shrink-0">
             <span v-if="index < 3 && currentPage === 1 && !searchQuery && !selectedDepartment && !selectedStatus">
               {{ getRankBadge(index) }}
             </span>
@@ -390,7 +390,7 @@ onMounted(() => {
           </div>
 
           <!-- Avatar -->
-          <img :src="member.avatar" :alt="member.name" class="w-12 h-12 rounded-full flex-shrink-0">
+          <img :src="member.avatar" :alt="member.name" class="w-12 h-12 rounded-full shrink-0">
 
           <!-- Info -->
           <div class="flex-1 min-w-0">
@@ -425,7 +425,7 @@ onMounted(() => {
           </div>
 
           <!-- Progress Circle -->
-          <div class="relative w-12 h-12 flex-shrink-0">
+          <div class="relative w-12 h-12 shrink-0">
             <svg class="w-12 h-12 -rotate-90" viewBox="0 0 36 36">
               <circle cx="18" cy="18" r="15" stroke="#E2E8F0" stroke-width="3" fill="none"/>
               <circle 
@@ -445,7 +445,7 @@ onMounted(() => {
           </div>
 
           <!-- Actions -->
-          <div class="flex items-center gap-1 flex-shrink-0">
+          <div class="flex items-center gap-1 shrink-0">
             <button
               @click="openEditModal(member)"
               class="p-2 text-slate-400 hover:text-blue-500 hover:bg-blue-50 rounded-lg cursor-pointer transition-colors"
