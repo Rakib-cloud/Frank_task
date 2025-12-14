@@ -1,10 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { useAuthStore } from '@/stores/auth'
 
-// Layouts
+// Main Layouts
 import MainLayout from '@/layouts/MainLayout.vue'
 
-// Views
+// Views for sidebar navigation
 import LoginView from '@/views/LoginView.vue'
 import DashboardView from '@/views/DashboardView.vue'
 import ProductsView from '@/views/ProductsView.vue'
