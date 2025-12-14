@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, onUnmounted, computed } from 'vue'
+import { ref, onMounted, onUnmounted, computed, watch } from 'vue'
 import { useAuth } from '@/composables/useAuth'
 import { dashboardService } from '@/services/dashboardService'
 import { campaignService } from '@/services/campaignService'
@@ -16,6 +16,17 @@ const competitors = ref([])
 const loading = ref(true)
 const activeTab = ref('all')
 const openMenuId = ref(null)
+
+// Pagination for campaigns
+const campaignPage = ref(1)
+const campaignPerPage = ref(3)
+
+// Pagination for team rankings
+const teamPage = ref(1)
+const teamPerPage = ref(5)
+
+// Sorting for team rankings
+const teamSortBy = ref('reviews')
 
 function toggleMenu(id, event) {
   event.stopPropagation()
@@ -43,11 +54,53 @@ const filteredCampaigns = computed(() => {
   return campaigns.value.filter(c => c.status === activeTab.value)
 })
 
+const paginatedCampaigns = computed(() => {
+  const start = (campaignPage.value - 1) * campaignPerPage.value
+  const end = start + campaignPerPage.value
+  return filteredCampaigns.value.slice(start, end)
+})
+
+const campaignTotalPages = computed(() => 
+  Math.ceil(filteredCampaigns.value.length / campaignPerPage.value)
+)
+
+// Sorted and paginated team rankings
+const sortedTeamRankings = computed(() => {
+  const sorted = [...teamRankings.value]
+  if (teamSortBy.value === 'reviews') {
+    sorted.sort((a, b) => b.reviews - a.reviews)
+  } else if (teamSortBy.value === 'rating') {
+    sorted.sort((a, b) => b.rating - a.rating)
+  } else if (teamSortBy.value === 'progress') {
+    sorted.sort((a, b) => b.progress - a.progress)
+  }
+  return sorted
+})
+
+const paginatedTeamRankings = computed(() => {
+  const start = (teamPage.value - 1) * teamPerPage.value
+  const end = start + teamPerPage.value
+  return sortedTeamRankings.value.slice(start, end)
+})
+
+const teamTotalPages = computed(() => 
+  Math.ceil(sortedTeamRankings.value.length / teamPerPage.value)
+)
+
 const greeting = computed(() => {
   const hour = new Date().getHours()
   if (hour < 12) return 'Good morning'
   if (hour < 18) return 'Good afternoon'
   return 'Good evening'
+})
+
+// Reset pages when filters change
+watch(activeTab, () => {
+  campaignPage.value = 1
+})
+
+watch(teamSortBy, () => {
+  teamPage.value = 1
 })
 
 onMounted(async () => {
@@ -78,6 +131,46 @@ function formatDate(dateStr) {
   const date = new Date(dateStr)
   return date.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })
 }
+
+function getRankBadge(index) {
+  const badges = ['🥇', '🥈', '🥉']
+  const globalIndex = (teamPage.value - 1) * teamPerPage.value + index
+  return badges[globalIndex] || ''
+}
+
+function getStatusClass(status) {
+  switch (status) {
+    case 'in_progress':
+      return 'bg-blue-50 text-blue-600 border-blue-200'
+    case 'completed':
+      return 'bg-green-50 text-green-600 border-green-200'
+    case 'upcoming':
+      return 'bg-amber-50 text-amber-600 border-amber-200'
+    default:
+      return 'bg-slate-100 text-slate-600 border-slate-200'
+  }
+}
+
+function getStatusLabel(status) {
+  return status?.replace('_', ' ') || status
+}
+
+// Pagination methods
+function prevCampaignPage() {
+  if (campaignPage.value > 1) campaignPage.value--
+}
+
+function nextCampaignPage() {
+  if (campaignPage.value < campaignTotalPages.value) campaignPage.value++
+}
+
+function prevTeamPage() {
+  if (teamPage.value > 1) teamPage.value--
+}
+
+function nextTeamPage() {
+  if (teamPage.value < teamTotalPages.value) teamPage.value++
+}
 </script>
 
 <template>
@@ -107,7 +200,7 @@ function formatDate(dateStr) {
           </svg>
           <span class="text-sm text-slate-500">Total Reviews</span>
         </div>
-        <p class="text-3xl font-bold text-slate-900 mt-3">{{ stats?.totalReviews?.toString().padStart(2, '0') || '00' }}</p>
+        <p class="text-3xl font-bold text-slate-900 mt-3">{{ stats?.totalReviews?.toLocaleString() || '0' }}</p>
       </div>
 
       <!-- Average Rating -->
@@ -122,7 +215,7 @@ function formatDate(dateStr) {
           <svg class="w-6 h-6 text-amber-400" fill="currentColor" viewBox="0 0 24 24">
             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
           </svg>
-          {{ stats?.averageRating?.toString().padStart(2, '0') || '00' }}
+          {{ stats?.averageRating || '0' }}
         </p>
       </div>
 
@@ -134,7 +227,7 @@ function formatDate(dateStr) {
           </svg>
           <span class="text-sm text-slate-500">Active Members</span>
         </div>
-        <p class="text-3xl font-bold text-slate-900 mt-3">{{ stats?.activeMembers?.toString().padStart(2, '0') || '00' }}</p>
+        <p class="text-3xl font-bold text-slate-900 mt-3">{{ stats?.activeMembers?.toLocaleString() || '0' }}</p>
       </div>
 
       <!-- Total Campaign -->
@@ -145,14 +238,14 @@ function formatDate(dateStr) {
           </svg>
           <span class="text-sm text-slate-500">Total Campaign</span>
         </div>
-        <p class="text-3xl font-bold text-slate-900 mt-3">{{ stats?.totalCampaigns?.toString().padStart(2, '0') || '00' }}</p>
+        <p class="text-3xl font-bold text-slate-900 mt-3">{{ stats?.totalCampaigns?.toLocaleString() || '0' }}</p>
       </div>
     </div>
 
     <!-- Main Content Grid -->
     <div class="grid grid-cols-1 xl:grid-cols-3 gap-6 mb-6">
       <!-- My Campaigns Section -->
-      <div class="xl:col-span-2 bg-white rounded-xl border border-slate-200">
+      <div class="xl:col-span-2 bg-white rounded-xl border border-slate-200 flex flex-col h-[580px]">
         <div class="p-5 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <h2 class="text-base font-semibold text-slate-900">My Campaigns</h2>
           <BaseButton variant="primary" size="md">
@@ -192,18 +285,21 @@ function formatDate(dateStr) {
           </div>
         </div>
 
-        <!-- Campaign Cards -->
-        <div class="p-5 space-y-4 max-h-[420px] overflow-y-auto">
+        <!-- Campaign Cards with Scroll -->
+        <div class="flex-1 p-5 space-y-4 overflow-y-auto">
+          <div v-if="paginatedCampaigns.length === 0" class="flex items-center justify-center h-full text-slate-400">
+            No campaigns found
+          </div>
           <div
-            v-for="campaign in filteredCampaigns"
+            v-for="campaign in paginatedCampaigns"
             :key="campaign.id"
-            class="p-4 border border-slate-200 rounded-xl"
+            class="p-4 border border-slate-200 rounded-xl hover:border-slate-300 transition-colors"
           >
             <div class="flex items-start justify-between mb-3">
               <h3 class="font-semibold text-slate-900">{{ campaign.name }}</h3>
               <div class="flex items-center gap-2">
-                <span class="px-3 py-1 text-xs font-medium rounded-full bg-blue-50 text-blue-600 border border-blue-200">
-                  In progress
+                <span :class="['px-3 py-1 text-xs font-medium rounded-full border capitalize', getStatusClass(campaign.status)]">
+                  {{ getStatusLabel(campaign.status) }}
                 </span>
                 <button class="p-1.5 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -236,11 +332,12 @@ function formatDate(dateStr) {
                   <img :src="campaign.topPerformer.avatar" :alt="campaign.topPerformer.name" class="w-6 h-6 rounded-full">
                   <span class="text-sm font-medium text-slate-700">{{ campaign.topPerformer.name }}</span>
                 </div>
+                <span v-else class="text-sm text-slate-400">-</span>
               </div>
               <div class="flex items-center gap-3">
                 <span class="text-xs font-medium text-slate-500 bg-slate-100 px-2 py-1 rounded">{{ campaign.progress }}%</span>
                 <span class="text-sm text-slate-600">
-                  <span class="font-semibold">{{ campaign.currentReviews.toString().padStart(2, '0') }}</span>/{{ campaign.targetReviews }} Reviews
+                  <span class="font-semibold">{{ campaign.currentReviews?.toString().padStart(2, '0') || '00' }}</span>/{{ campaign.targetReviews }} Reviews
                 </span>
               </div>
             </div>
@@ -260,41 +357,108 @@ function formatDate(dateStr) {
             </div>
           </div>
         </div>
+
+        <!-- Campaign Pagination -->
+        <div class="px-5 py-3 border-t border-slate-100 flex items-center justify-between">
+          <span class="text-xs text-slate-500">
+            {{ filteredCampaigns.length }} campaigns
+          </span>
+          <div class="flex items-center gap-2">
+            <span class="text-xs text-slate-500">{{ campaignPage }} / {{ campaignTotalPages || 1 }}</span>
+            <button 
+              :disabled="campaignPage <= 1"
+              :class="['p-1 rounded', campaignPage <= 1 ? 'text-slate-300 cursor-not-allowed' : 'text-slate-600 hover:bg-slate-100']"
+              @click="prevCampaignPage"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+              </svg>
+            </button>
+            <button 
+              :disabled="campaignPage >= campaignTotalPages"
+              :class="['p-1 rounded', campaignPage >= campaignTotalPages ? 'text-slate-300 cursor-not-allowed' : 'text-slate-600 hover:bg-slate-100']"
+              @click="nextCampaignPage"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </button>
+          </div>
+        </div>
       </div>
 
       <!-- Team Ranking Section -->
-      <div class="bg-white rounded-xl border border-slate-200">
+      <div class="bg-white rounded-xl border border-slate-200 flex flex-col h-[580px]">
         <div class="p-5 border-b border-slate-100 flex items-center justify-between">
           <h2 class="text-base font-semibold text-slate-900">Team Ranking</h2>
-          <button class="flex items-center gap-2 text-sm text-slate-500 hover:text-slate-700 px-4 py-2 border border-slate-200 rounded-lg bg-slate-50 hover:bg-slate-100 transition-colors">
-            Number of reviews
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-            </svg>
-          </button>
+          <select 
+            v-model="teamSortBy"
+            class="text-sm text-slate-500 px-3 py-2 border border-slate-200 rounded-lg bg-slate-50 hover:bg-slate-100 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
+          >
+            <option value="reviews">Number of reviews</option>
+            <option value="rating">Rating</option>
+            <option value="progress">Progress</option>
+          </select>
         </div>
-        <div class="p-4 space-y-2">
-          <div v-for="member in teamRankings" :key="member.id" class="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors">
+
+        <!-- Team Rankings with Scroll -->
+        <div class="flex-1 p-4 space-y-2 overflow-y-auto">
+          <div v-if="paginatedTeamRankings.length === 0" class="flex items-center justify-center h-full text-slate-400">
+            No team members found
+          </div>
+          <div 
+            v-for="(member, index) in paginatedTeamRankings" 
+            :key="member.id" 
+            class="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors"
+          >
             <div class="relative">
               <img :src="member.avatar" :alt="member.name" class="w-11 h-11 rounded-full">
-              <span class="absolute -bottom-1 -right-1 text-lg">🥇</span>
+              <span v-if="getRankBadge(index)" class="absolute -bottom-1 -right-1 text-lg">{{ getRankBadge(index) }}</span>
             </div>
             <div class="flex-1 min-w-0">
-              <p class="text-sm font-semibold text-slate-900">{{ member.name }}</p>
+              <p class="text-sm font-semibold text-slate-900 truncate">{{ member.name }}</p>
               <div class="flex items-center gap-1">
                 <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                 </svg>
-                <span class="text-xs text-slate-500">{{ member.rating > 0 ? member.rating : '' }} ({{ member.reviews }} Reviews)</span>
+                <span class="text-xs text-slate-500">{{ member.rating > 0 ? member.rating : '-' }} ({{ member.reviews }} Reviews)</span>
               </div>
             </div>
-            <div class="relative w-12 h-12">
+            <div class="relative w-12 h-12 flex-shrink-0">
               <svg class="w-12 h-12 -rotate-90" viewBox="0 0 36 36">
                 <circle cx="18" cy="18" r="15" stroke="#E2E8F0" stroke-width="3" fill="none"/>
                 <circle cx="18" cy="18" r="15" stroke="#3B82F6" stroke-width="3" fill="none" :stroke-dasharray="`${member.progress * 0.942} 94.2`" stroke-linecap="round"/>
               </svg>
               <span class="absolute inset-0 flex items-center justify-center text-xs font-semibold text-slate-700">{{ member.progress }}%</span>
             </div>
+          </div>
+        </div>
+
+        <!-- Team Pagination -->
+        <div class="px-5 py-3 border-t border-slate-100 flex items-center justify-between">
+          <span class="text-xs text-slate-500">
+            {{ teamRankings.length }} members
+          </span>
+          <div class="flex items-center gap-2">
+            <span class="text-xs text-slate-500">{{ teamPage }} / {{ teamTotalPages || 1 }}</span>
+            <button 
+              :disabled="teamPage <= 1"
+              :class="['p-1 rounded', teamPage <= 1 ? 'text-slate-300 cursor-not-allowed' : 'text-slate-600 hover:bg-slate-100']"
+              @click="prevTeamPage"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+              </svg>
+            </button>
+            <button 
+              :disabled="teamPage >= teamTotalPages"
+              :class="['p-1 rounded', teamPage >= teamTotalPages ? 'text-slate-300 cursor-not-allowed' : 'text-slate-600 hover:bg-slate-100']"
+              @click="nextTeamPage"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </button>
           </div>
         </div>
       </div>
