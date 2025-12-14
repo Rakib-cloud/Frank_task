@@ -60,7 +60,7 @@ const iconSizeClasses = {
       variantClasses[variant],
       icon ? iconSizeClasses[size] : sizeClasses[size],
       fullWidth ? 'w-full' : '',
-      (loading || disabled) ? 'opacity-60 cursor-not-allowed' : ''
+      (loading || disabled) ? 'opacity-60 cursor-not-allowed' : 'cursor-pointer'
     ]"
     :disabled="loading || disabled"
     @click="$emit('click', $event)"
