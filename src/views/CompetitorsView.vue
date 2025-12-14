@@ -164,7 +164,7 @@ onMounted(() => {
 
       <!-- Custom Cell: Actions -->
       <template #cell-actions="{ row }">
-        <button class="px-4 py-2 text-sm text-slate-600 border border-slate-200 rounded-lg hover:bg-slate-50 font-medium transition-colors">
+        <button class="px-4 py-2 text-sm text-slate-600 border border-slate-200 rounded-lg hover:bg-slate-50 font-medium cursor-pointer transition-colors">
           View
         </button>
       </template>

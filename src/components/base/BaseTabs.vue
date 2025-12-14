@@ -20,7 +20,7 @@ defineEmits(['update:activeTab'])
         v-for="tab in tabs"
         :key="tab.value"
         :class="[
-          'px-4 py-3 text-sm font-medium border-b-2 whitespace-nowrap transition-colors',
+          'px-4 py-3 text-sm font-medium border-b-2 whitespace-nowrap cursor-pointer transition-colors',
           activeTab === tab.value
             ? 'border-primary-600 text-primary-600'
             : 'border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300'

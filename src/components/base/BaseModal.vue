@@ -55,7 +55,7 @@ watch(() => props.show, (newVal) => {
       >
         <!-- Backdrop -->
         <div
-          class="absolute inset-0 bg-slate-900/50 backdrop-blur-sm"
+          class="absolute inset-0 bg-slate-900/50 backdrop-blur-sm cursor-pointer"
           @click="closeModal"
         />
         
@@ -76,7 +76,7 @@ watch(() => props.show, (newVal) => {
             </h3>
             <button
               v-if="closable"
-              class="p-1 text-slate-400 hover:text-slate-600 transition-colors rounded-lg hover:bg-slate-100"
+              class="p-1 text-slate-400 hover:text-slate-600 cursor-pointer transition-colors rounded-lg hover:bg-slate-100"
               @click="closeModal"
             >
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

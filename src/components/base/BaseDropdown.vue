@@ -37,7 +37,7 @@ onUnmounted(() => {
 
 <template>
   <div ref="dropdownRef" class="relative">
-    <div @click="toggle">
+    <div class="cursor-pointer" @click="toggle">
       <slot name="trigger" />
     </div>
 

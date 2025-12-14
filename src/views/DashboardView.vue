@@ -263,7 +263,7 @@ function nextTeamPage() {
               v-for="tab in campaignTabs"
               :key="tab.value"
               :class="[
-                'flex items-center gap-2 py-3 text-sm font-medium whitespace-nowrap border-b-2 transition-colors',
+                'flex items-center gap-2 py-3 text-sm font-medium whitespace-nowrap border-b-2 cursor-pointer transition-colors',
                 activeTab === tab.value
                   ? 'border-blue-500 text-blue-600'
                   : 'border-transparent text-slate-500 hover:text-slate-700'
@@ -301,12 +301,12 @@ function nextTeamPage() {
                 <span :class="['px-3 py-1 text-xs font-medium rounded-full border capitalize', getStatusClass(campaign.status)]">
                   {{ getStatusLabel(campaign.status) }}
                 </span>
-                <button class="p-1.5 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded">
+                <button class="p-1.5 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded cursor-pointer">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
                   </svg>
                 </button>
-                <button class="p-1.5 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded">
+                <button class="p-1.5 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded cursor-pointer">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
                   </svg>
@@ -367,7 +367,7 @@ function nextTeamPage() {
             <span class="text-xs text-slate-500">{{ campaignPage }} / {{ campaignTotalPages || 1 }}</span>
             <button 
               :disabled="campaignPage <= 1"
-              :class="['p-1 rounded', campaignPage <= 1 ? 'text-slate-300 cursor-not-allowed' : 'text-slate-600 hover:bg-slate-100']"
+              :class="['p-1 rounded', campaignPage <= 1 ? 'text-slate-300 cursor-not-allowed' : 'text-slate-600 hover:bg-slate-100 cursor-pointer']"
               @click="prevCampaignPage"
             >
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -376,7 +376,7 @@ function nextTeamPage() {
             </button>
             <button 
               :disabled="campaignPage >= campaignTotalPages"
-              :class="['p-1 rounded', campaignPage >= campaignTotalPages ? 'text-slate-300 cursor-not-allowed' : 'text-slate-600 hover:bg-slate-100']"
+              :class="['p-1 rounded', campaignPage >= campaignTotalPages ? 'text-slate-300 cursor-not-allowed' : 'text-slate-600 hover:bg-slate-100 cursor-pointer']"
               @click="nextCampaignPage"
             >
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -443,7 +443,7 @@ function nextTeamPage() {
             <span class="text-xs text-slate-500">{{ teamPage }} / {{ teamTotalPages || 1 }}</span>
             <button 
               :disabled="teamPage <= 1"
-              :class="['p-1 rounded', teamPage <= 1 ? 'text-slate-300 cursor-not-allowed' : 'text-slate-600 hover:bg-slate-100']"
+              :class="['p-1 rounded', teamPage <= 1 ? 'text-slate-300 cursor-not-allowed' : 'text-slate-600 hover:bg-slate-100 cursor-pointer']"
               @click="prevTeamPage"
             >
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -452,7 +452,7 @@ function nextTeamPage() {
             </button>
             <button 
               :disabled="teamPage >= teamTotalPages"
-              :class="['p-1 rounded', teamPage >= teamTotalPages ? 'text-slate-300 cursor-not-allowed' : 'text-slate-600 hover:bg-slate-100']"
+              :class="['p-1 rounded', teamPage >= teamTotalPages ? 'text-slate-300 cursor-not-allowed' : 'text-slate-600 hover:bg-slate-100 cursor-pointer']"
               @click="nextTeamPage"
             >
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -518,13 +518,13 @@ function nextTeamPage() {
               <td class="px-5 py-4">
                 <div class="flex items-center gap-2">
                   <!-- View Button -->
-                  <button class="px-4 py-2 text-sm text-slate-600 border border-slate-200 rounded-lg hover:bg-slate-50 font-medium transition-colors">View</button>
+                  <button class="px-4 py-2 text-sm text-slate-600 border border-slate-200 rounded-lg hover:bg-slate-50 font-medium cursor-pointer transition-colors">View</button>
                   
                   <!-- 3-dot Menu -->
                   <div class="relative">
                     <button 
                       @click="toggleMenu(competitor.id, $event)"
-                      class="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg border border-slate-200 transition-colors"
+                      class="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg border border-slate-200 cursor-pointer transition-colors"
                     >
                       <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                         <circle cx="12" cy="5" r="2"/>
@@ -540,7 +540,7 @@ function nextTeamPage() {
                     >
                       <button 
                         @click="closeMenu()"
-                        class="w-full flex items-center gap-2 px-3 py-2 text-sm text-slate-600 hover:bg-slate-50 transition-colors"
+                        class="w-full flex items-center gap-2 px-3 py-2 text-sm text-slate-600 hover:bg-slate-50 cursor-pointer transition-colors"
                       >
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
@@ -550,7 +550,7 @@ function nextTeamPage() {
                       </button>
                       <button 
                         @click="closeMenu()"
-                        class="w-full flex items-center gap-2 px-3 py-2 text-sm text-slate-600 hover:bg-slate-50 transition-colors"
+                        class="w-full flex items-center gap-2 px-3 py-2 text-sm text-slate-600 hover:bg-slate-50 cursor-pointer transition-colors"
                       >
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
@@ -559,7 +559,7 @@ function nextTeamPage() {
                       </button>
                       <button 
                         @click="closeMenu()"
-                        class="w-full flex items-center gap-2 px-3 py-2 text-sm text-red-500 hover:bg-red-50 transition-colors"
+                        class="w-full flex items-center gap-2 px-3 py-2 text-sm text-red-500 hover:bg-red-50 cursor-pointer transition-colors"
                       >
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
@@ -588,8 +588,8 @@ function nextTeamPage() {
           </div>
           <span class="text-sm text-slate-600">Page 1 of 10</span>
           <div class="flex items-center gap-1">
-            <button class="p-1.5 text-slate-300" disabled><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg></button>
-            <button class="p-1.5 text-slate-600 hover:bg-slate-100 rounded"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></button>
+            <button class="p-1.5 text-slate-300 cursor-not-allowed" disabled><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg></button>
+            <button class="p-1.5 text-slate-600 hover:bg-slate-100 rounded cursor-pointer"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></button>
           </div>
         </div>
       </div>

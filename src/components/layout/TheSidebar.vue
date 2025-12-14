@@ -63,7 +63,7 @@ function toggleSidebar() {
       <!-- Collapse Button -->
       <button 
         v-if="!isCollapsed"
-        class="p-1.5 rounded-lg text-slate-400 hover:bg-slate-100 hover:text-slate-600 transition-colors"
+        class="p-1.5 rounded-lg text-slate-400 hover:bg-slate-100 hover:text-slate-600 cursor-pointer transition-colors"
         @click="toggleSidebar"
       >
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -75,7 +75,7 @@ function toggleSidebar() {
     <!-- Expand Button (when collapsed) -->
     <button 
       v-if="isCollapsed"
-      class="mx-auto mt-3 p-1.5 rounded-lg text-slate-400 hover:bg-slate-100 hover:text-slate-600 transition-colors"
+      class="mx-auto mt-3 p-1.5 rounded-lg text-slate-400 hover:bg-slate-100 hover:text-slate-600 cursor-pointer transition-colors"
       @click="toggleSidebar"
     >
       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -89,7 +89,7 @@ function toggleSidebar() {
         <li v-for="item in menuItems" :key="item.path">
           <button
             :class="[
-              'w-full flex items-center gap-3 rounded-lg text-sm font-medium transition-all duration-200',
+              'w-full flex items-center gap-3 rounded-lg text-sm font-medium cursor-pointer transition-all duration-200',
               isCollapsed ? 'justify-center px-2 py-2.5' : 'px-3 py-2.5',
               isActive(item.path)
                 ? 'bg-blue-50 text-blue-600'
@@ -159,7 +159,7 @@ function toggleSidebar() {
     <div class="p-2 border-t border-slate-100">
       <button
         :class="[
-          'w-full flex items-center gap-3 rounded-lg text-sm font-medium text-red-500 hover:bg-red-50 transition-colors',
+          'w-full flex items-center gap-3 rounded-lg text-sm font-medium text-red-500 hover:bg-red-50 cursor-pointer transition-colors',
           isCollapsed ? 'justify-center px-2 py-2.5' : 'px-3 py-2.5'
         ]"
         :title="isCollapsed ? 'Sign out' : ''"

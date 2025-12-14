@@ -57,7 +57,7 @@ function nextPage() {
     <!-- Previous Button -->
     <button
       :disabled="currentPage === 1"
-      class="p-2 rounded-lg text-slate-600 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+      class="p-2 rounded-lg text-slate-600 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer transition-colors"
       @click="prevPage"
     >
       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -68,7 +68,7 @@ function nextPage() {
     <!-- First Page -->
     <button
       v-if="pages[0] > 1"
-      class="px-3 py-1.5 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-100 transition-colors"
+      class="px-3 py-1.5 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-100 cursor-pointer transition-colors"
       @click="goToPage(1)"
     >
       1
@@ -87,7 +87,7 @@ function nextPage() {
       v-for="page in pages"
       :key="page"
       :class="[
-        'px-3 py-1.5 rounded-lg text-sm font-medium transition-colors',
+        'px-3 py-1.5 rounded-lg text-sm font-medium cursor-pointer transition-colors',
         page === currentPage
           ? 'bg-primary-600 text-white'
           : 'text-slate-600 hover:bg-slate-100'
@@ -108,7 +108,7 @@ function nextPage() {
     <!-- Last Page -->
     <button
       v-if="pages[pages.length - 1] < totalPages"
-      class="px-3 py-1.5 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-100 transition-colors"
+      class="px-3 py-1.5 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-100 cursor-pointer transition-colors"
       @click="goToPage(totalPages)"
     >
       {{ totalPages }}
@@ -117,7 +117,7 @@ function nextPage() {
     <!-- Next Button -->
     <button
       :disabled="currentPage === totalPages"
-      class="p-2 rounded-lg text-slate-600 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+      class="p-2 rounded-lg text-slate-600 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer transition-colors"
       @click="nextPage"
     >
       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

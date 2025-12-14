@@ -50,7 +50,7 @@ function handleLogout() {
     <Transition name="fade">
       <div
         v-if="isOpen"
-        class="fixed inset-0 z-40 bg-slate-900/50 backdrop-blur-sm lg:hidden"
+        class="fixed inset-0 z-40 bg-slate-900/50 backdrop-blur-sm lg:hidden cursor-pointer"
         @click="close"
       />
     </Transition>
@@ -76,7 +76,7 @@ function handleLogout() {
             <span class="text-lg font-semibold text-slate-900">MyFrank</span>
           </div>
           <button
-            class="p-2 rounded-lg text-slate-400 hover:bg-slate-100 transition-colors"
+            class="p-2 rounded-lg text-slate-400 hover:bg-slate-100 cursor-pointer transition-colors"
             @click="close"
           >
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -91,7 +91,7 @@ function handleLogout() {
             <li v-for="item in menuItems" :key="item.path">
               <button
                 :class="[
-                  'w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200',
+                  'w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium cursor-pointer transition-all duration-200',
                   isActive(item.path)
                     ? 'bg-blue-50 text-blue-600'
                     : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
@@ -139,7 +139,7 @@ function handleLogout() {
         <!-- Sign Out -->
         <div class="p-3 border-t border-slate-100">
           <button
-            class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-red-500 hover:bg-red-50 transition-colors"
+            class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-red-500 hover:bg-red-50 cursor-pointer transition-colors"
             @click="handleLogout"
           >
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
