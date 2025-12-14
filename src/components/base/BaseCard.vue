@@ -22,7 +22,7 @@ const paddingClasses = {
 <template>
   <div
     :class="[
-      'bg-white rounded-xl border border-slate-200 shadow-sm',
+      'bg-white rounded-xl border border-slate-200',
       paddingClasses[padding],
       hover ? 'hover:shadow-md hover:border-slate-300 transition-all duration-200' : ''
     ]"
