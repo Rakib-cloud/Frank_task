@@ -4,10 +4,15 @@ import { useUIStore } from '@/stores/ui'
 import TheSidebar from '@/components/layout/TheSidebar.vue'
 import TheSidebarMobile from '@/components/layout/TheSidebarMobile.vue'
 import TheHeader from '@/components/layout/TheHeader.vue'
+import TheBottomNav from '@/components/layout/TheBottomNav.vue'
 
 const uiStore = useUIStore()
 
 const sidebarCollapsed = computed(() => uiStore.sidebarCollapsed)
+
+function openMobileMenu() {
+  uiStore.toggleMobileSidebar()
+}
 </script>
 
 <template>
@@ -17,7 +22,7 @@ const sidebarCollapsed = computed(() => uiStore.sidebarCollapsed)
       <TheSidebar />
     </div>
 
-    <!-- Mobile Sidebar -->
+    <!-- Mobile Sidebar (More menu) -->
     <TheSidebarMobile />
 
     <!-- Main Content -->
@@ -29,9 +34,13 @@ const sidebarCollapsed = computed(() => uiStore.sidebarCollapsed)
     >
       <TheHeader />
       
-      <main class="p-5">
+      <!-- Main content with bottom padding on mobile for bottom nav -->
+      <main class="p-4 lg:p-5 pb-20 lg:pb-5">
         <router-view />
       </main>
     </div>
+
+    <!-- Mobile Bottom Navigation -->
+    <TheBottomNav @open-menu="openMobileMenu" />
   </div>
 </template>

@@ -4,7 +4,6 @@ import { useAuth } from '@/composables/useAuth'
 import { dashboardService } from '@/services/dashboardService'
 import { campaignService } from '@/services/campaignService'
 import { competitorService } from '@/services/competitorService'
-import PageHeader from '@/components/base/PageHeader.vue'
 import BaseButton from '@/components/base/BaseButton.vue'
 
 const { userName } = useAuth()
@@ -176,51 +175,56 @@ function nextTeamPage() {
 <template>
   <div>
     <!-- Header -->
-    <PageHeader :title="`${greeting}, ${userName} 👋`">
-      <template #actions>
-        <BaseButton variant="primary" size="md">
-          <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
-          </svg>
-          Add Member
-          <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
-          </svg>
-        </BaseButton>
-      </template>
-    </PageHeader>
+    <div class="flex items-center justify-between mb-6">
+      <div>
+        <h1 class="text-xl lg:text-2xl font-bold text-slate-900">{{ greeting }},</h1>
+        <h1 class="text-xl lg:text-2xl font-bold text-slate-900">{{ userName }} 👋</h1>
+      </div>
+      <BaseButton variant="primary" size="md" class="shrink-0">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+        </svg>
+        <span class="hidden sm:inline">Add Member</span>
+        <span class="sm:hidden">Add</span>
+      </BaseButton>
+    </div>
 
-    <!-- Stats Cards -->
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+    <!-- Stats Cards - Mobile optimized -->
+    <div class="grid grid-cols-2 gap-3 lg:gap-4 mb-6">
       <!-- Total Reviews -->
-      <div class="bg-white rounded-xl border border-slate-200 p-5">
-        <div class="flex items-center gap-3">
-          <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div class="bg-white rounded-xl border border-slate-200 p-4 lg:p-5">
+        <div class="flex items-center gap-2 lg:gap-3">
+          <svg class="w-4 h-4 lg:w-5 lg:h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
           </svg>
-          <span class="text-sm text-slate-500">Total Reviews</span>
+          <span class="text-xs lg:text-sm text-slate-500">Total reviews</span>
         </div>
-        <p class="text-3xl font-bold text-slate-900 mt-3">{{ stats?.totalReviews?.toLocaleString() || '0' }}</p>
+        <p class="text-2xl lg:text-3xl font-bold text-slate-900 mt-2 lg:mt-3">{{ stats?.totalReviews?.toString().padStart(2, '0') || '00' }}</p>
       </div>
 
       <!-- Average Rating -->
-      <div class="bg-white rounded-xl border border-slate-200 p-5">
-        <div class="flex items-center gap-3">
-          <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+      <div class="bg-white rounded-xl border border-slate-200 p-4 lg:p-5">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2 lg:gap-3">
+            <svg class="w-4 h-4 lg:w-5 lg:h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+            </svg>
+            <span class="text-xs lg:text-sm text-slate-500">Average rating</span>
+          </div>
+          <svg class="hidden lg:block w-5 h-5 text-slate-300 cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
           </svg>
-          <span class="text-sm text-slate-500">Average Rating</span>
         </div>
-        <p class="text-3xl font-bold text-slate-900 mt-3 flex items-center gap-1">
-          <svg class="w-6 h-6 text-amber-400" fill="currentColor" viewBox="0 0 24 24">
+        <p class="text-2xl lg:text-3xl font-bold text-slate-900 mt-2 lg:mt-3 flex items-center gap-1">
+          <svg class="w-5 h-5 lg:w-6 lg:h-6 text-amber-400" fill="currentColor" viewBox="0 0 24 24">
             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
           </svg>
           {{ stats?.averageRating || '0' }}
         </p>
       </div>
 
-      <!-- Active Members -->
-      <div class="bg-white rounded-xl border border-slate-200 p-5">
+      <!-- Active Members - Hidden on mobile -->
+      <div class="hidden lg:block bg-white rounded-xl border border-slate-200 p-5">
         <div class="flex items-center gap-3">
           <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
@@ -230,8 +234,8 @@ function nextTeamPage() {
         <p class="text-3xl font-bold text-slate-900 mt-3">{{ stats?.activeMembers?.toLocaleString() || '0' }}</p>
       </div>
 
-      <!-- Total Campaign -->
-      <div class="bg-white rounded-xl border border-slate-200 p-5">
+      <!-- Total Campaign - Hidden on mobile -->
+      <div class="hidden lg:block bg-white rounded-xl border border-slate-200 p-5">
         <div class="flex items-center gap-3">
           <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
@@ -245,25 +249,26 @@ function nextTeamPage() {
     <!-- Main Content Grid -->
     <div class="grid grid-cols-1 xl:grid-cols-3 gap-6 mb-6">
       <!-- My Campaigns Section -->
-      <div class="xl:col-span-2 bg-white rounded-xl border border-slate-200 flex flex-col h-[580px]">
-        <div class="p-5 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+      <div class="xl:col-span-2 bg-white rounded-xl border border-slate-200 flex flex-col lg:h-[580px]">
+        <div class="p-4 lg:p-5 border-b border-slate-100 flex items-center justify-between">
           <h2 class="text-base font-semibold text-slate-900">My Campaigns</h2>
           <BaseButton variant="primary" size="md">
-            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-4 h-4 mr-1 lg:mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
             </svg>
-            Create New Campaign
+            <span class="hidden sm:inline">Create New Campaign</span>
+            <span class="sm:hidden">Create</span>
           </BaseButton>
         </div>
 
-        <!-- Tabs -->
-        <div class="px-5 border-b border-slate-100">
-          <div class="flex gap-6 overflow-x-auto -mb-px">
+        <!-- Tabs - Horizontal scrollable on mobile -->
+        <div class="px-4 lg:px-5 border-b border-slate-100 overflow-x-auto">
+          <div class="flex gap-4 lg:gap-6 -mb-px min-w-max">
             <button
               v-for="tab in campaignTabs"
               :key="tab.value"
               :class="[
-                'flex items-center gap-2 py-3 text-sm font-medium whitespace-nowrap border-b-2 cursor-pointer transition-colors',
+                'flex items-center gap-1.5 lg:gap-2 py-3 text-xs lg:text-sm font-medium whitespace-nowrap border-b-2 cursor-pointer transition-colors',
                 activeTab === tab.value
                   ? 'border-blue-500 text-blue-600'
                   : 'border-transparent text-slate-500 hover:text-slate-700'
@@ -273,7 +278,7 @@ function nextTeamPage() {
               {{ tab.label }}
               <span
                 :class="[
-                  'px-2 py-0.5 text-xs rounded-md',
+                  'px-1.5 lg:px-2 py-0.5 text-xs rounded-md',
                   activeTab === tab.value
                     ? 'bg-blue-100 text-blue-600'
                     : 'bg-slate-100 text-slate-500'
@@ -286,72 +291,67 @@ function nextTeamPage() {
         </div>
 
         <!-- Campaign Cards with Scroll -->
-        <div class="flex-1 p-5 space-y-4 overflow-y-auto">
+        <div class="flex-1 p-4 lg:p-5 space-y-3 lg:space-y-4 overflow-y-auto">
           <div v-if="paginatedCampaigns.length === 0" class="flex items-center justify-center h-full text-slate-400">
             No campaigns found
           </div>
           <div
             v-for="campaign in paginatedCampaigns"
             :key="campaign.id"
-            class="p-4 border border-slate-200 rounded-xl hover:border-slate-300 transition-colors"
+            class="p-3 lg:p-4 border border-slate-200 rounded-xl hover:border-slate-300 transition-colors"
           >
-            <div class="flex items-start justify-between mb-3">
-              <h3 class="font-semibold text-slate-900">{{ campaign.name }}</h3>
-              <div class="flex items-center gap-2">
-                <span :class="['px-3 py-1 text-xs font-medium rounded-full border capitalize', getStatusClass(campaign.status)]">
+            <!-- Header with name and status -->
+            <div class="flex items-start justify-between mb-2 lg:mb-3">
+              <h3 class="font-semibold text-slate-900 text-sm lg:text-base">{{ campaign.name }}</h3>
+              <div class="flex items-center gap-1 lg:gap-2">
+                <span :class="['px-2 lg:px-3 py-0.5 lg:py-1 text-xs font-medium rounded-full border capitalize', getStatusClass(campaign.status)]">
                   {{ getStatusLabel(campaign.status) }}
                 </span>
-                <button class="p-1.5 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded cursor-pointer">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
-                  </svg>
-                </button>
-                <button class="p-1.5 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded cursor-pointer">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
+                <!-- 3-dot menu on mobile, full buttons on desktop -->
+                <button class="p-1 lg:p-1.5 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded cursor-pointer">
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <circle cx="12" cy="5" r="2"/>
+                    <circle cx="12" cy="12" r="2"/>
+                    <circle cx="12" cy="19" r="2"/>
                   </svg>
                 </button>
               </div>
             </div>
 
             <!-- Reward -->
-            <div class="flex items-center gap-2 mb-4">
+            <div class="flex items-center gap-2 mb-3 lg:mb-4">
               <span class="flex items-center gap-1.5 text-sm">
-                <span class="text-lg">🎁</span>
+                <span class="text-base lg:text-lg">🎁</span>
                 <span class="font-medium text-slate-900">{{ campaign.reward }}</span>
               </span>
               <span v-if="campaign.rewardCount" class="text-xs text-slate-400">{{ campaign.rewardCount }} more reward</span>
             </div>
 
-            <!-- Top Performer & Progress -->
-            <div class="flex items-center justify-between mb-3">
-              <div class="flex items-center gap-3">
-                <span class="text-sm text-slate-500">Top Performer</span>
-                <div v-if="campaign.topPerformer" class="flex items-center gap-2">
-                  <span class="text-lg">👆</span>
-                  <img :src="campaign.topPerformer.avatar" :alt="campaign.topPerformer.name" class="w-6 h-6 rounded-full">
-                  <span class="text-sm font-medium text-slate-700">{{ campaign.topPerformer.name }}</span>
-                </div>
-                <span v-else class="text-sm text-slate-400">-</span>
+            <!-- Top Performer - Mobile optimized -->
+            <div class="flex items-center gap-2 mb-3">
+              <div v-if="campaign.topPerformer" class="flex items-center gap-2">
+                <span class="text-base">🏅</span>
+                <img :src="campaign.topPerformer.avatar" :alt="campaign.topPerformer.name" class="w-5 h-5 lg:w-6 lg:h-6 rounded-full">
+                <span class="text-xs lg:text-sm font-medium text-slate-700">{{ campaign.topPerformer.name }}</span>
               </div>
-              <div class="flex items-center gap-3">
-                <span class="text-xs font-medium text-slate-500 bg-slate-100 px-2 py-1 rounded">{{ campaign.progress }}%</span>
-                <span class="text-sm text-slate-600">
+              <div class="ml-auto flex items-center gap-2">
+                <span class="text-xs font-medium text-slate-500 bg-slate-100 px-2 py-0.5 rounded">{{ campaign.progress }}%</span>
+                <span class="text-xs lg:text-sm text-slate-600">
                   <span class="font-semibold">{{ campaign.currentReviews?.toString().padStart(2, '0') || '00' }}</span>/{{ campaign.targetReviews }} Reviews
                 </span>
               </div>
             </div>
 
             <!-- Progress Bar -->
-            <div class="h-2 bg-blue-100 rounded-full overflow-hidden mb-4">
+            <div class="h-1.5 lg:h-2 bg-blue-100 rounded-full overflow-hidden mb-3 lg:mb-4">
               <div class="h-full bg-blue-500 rounded-full transition-all" :style="{ width: `${campaign.progress}%` }"/>
             </div>
 
             <!-- Footer -->
-            <div class="flex items-center justify-between text-sm text-slate-500">
+            <div class="flex items-center justify-between text-xs lg:text-sm text-slate-500">
               <span>Start Date: <span class="text-slate-700">{{ formatDate(campaign.startDate) }}</span></span>
-              <span class="flex items-center gap-1.5">
-                <span class="text-base">📅</span>
+              <span class="flex items-center gap-1">
+                <span class="text-sm lg:text-base">📅</span>
                 {{ campaign.daysLeft }} Days left
               </span>
             </div>
@@ -387,8 +387,8 @@ function nextTeamPage() {
         </div>
       </div>
 
-      <!-- Team Ranking Section -->
-      <div class="bg-white rounded-xl border border-slate-200 flex flex-col h-[580px]">
+      <!-- Team Ranking Section - Hidden on mobile -->
+      <div class="hidden lg:flex bg-white rounded-xl border border-slate-200 flex-col h-[580px]">
         <div class="p-5 border-b border-slate-100 flex items-center justify-between">
           <h2 class="text-base font-semibold text-slate-900">Team Ranking</h2>
           <select 
@@ -424,7 +424,7 @@ function nextTeamPage() {
                 <span class="text-xs text-slate-500">{{ member.rating > 0 ? member.rating : '-' }} ({{ member.reviews }} Reviews)</span>
               </div>
             </div>
-            <div class="relative w-12 h-12 flex-shrink-0">
+            <div class="relative w-12 h-12 shrink-0">
               <svg class="w-12 h-12 -rotate-90" viewBox="0 0 36 36">
                 <circle cx="18" cy="18" r="15" stroke="#E2E8F0" stroke-width="3" fill="none"/>
                 <circle cx="18" cy="18" r="15" stroke="#3B82F6" stroke-width="3" fill="none" :stroke-dasharray="`${member.progress * 0.942} 94.2`" stroke-linecap="round"/>
@@ -464,8 +464,8 @@ function nextTeamPage() {
       </div>
     </div>
 
-    <!-- Competitors Section -->
-    <div class="bg-white rounded-xl border border-slate-200">
+    <!-- Competitors Section - Hidden on mobile -->
+    <div class="hidden lg:block bg-white rounded-xl border border-slate-200">
       <div class="p-5 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <h2 class="text-base font-semibold text-slate-900">My competitors</h2>
         <div class="flex items-center gap-3">

@@ -13,21 +13,69 @@ function toggleMobileSidebar() {
 
 <template>
   <header class="sticky top-0 z-30 bg-white border-b border-slate-200">
-    <div class="h-14 px-6 flex items-center justify-between">
-      <!-- Left Section -->
-      <div class="flex items-center gap-4">
-        <!-- Mobile Menu Button -->
-        <button
-          class="lg:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100 cursor-pointer transition-colors"
-          @click="toggleMobileSidebar"
-        >
+    <!-- Mobile Header -->
+    <div class="lg:hidden px-4 py-3">
+      <div class="flex items-center gap-3">
+        <!-- Establishment Search/Select -->
+        <div class="flex-1 flex items-center gap-2 px-3 py-2.5 border border-slate-200 rounded-full bg-white">
+          <svg class="w-4 h-4 text-slate-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+          </svg>
+          <input 
+            type="text" 
+            placeholder="Establish Name goes here"
+            class="flex-1 text-sm text-slate-600 placeholder-slate-400 bg-transparent border-none focus:outline-none"
+          >
+        </div>
+        
+        <!-- Globe/Language -->
+        <button class="p-2.5 rounded-full border border-slate-200 text-slate-600 hover:bg-slate-50 cursor-pointer transition-colors">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
           </svg>
         </button>
+        
+        <!-- User Avatar -->
+        <BaseDropdown align="right">
+          <template #trigger>
+            <button class="cursor-pointer">
+              <img
+                :src="userAvatar"
+                :alt="userName"
+                class="w-10 h-10 rounded-full object-cover border-2 border-slate-200"
+              >
+            </button>
+          </template>
+          <div class="py-1 min-w-[160px]">
+            <div class="px-4 py-2 border-b border-slate-100">
+              <p class="text-sm font-medium text-slate-900">{{ userName }}</p>
+              <p class="text-xs text-slate-500">Manager</p>
+            </div>
+            <a href="#" class="flex items-center gap-2 px-4 py-2 text-sm text-slate-700 hover:bg-slate-100 cursor-pointer">
+              Profile
+            </a>
+            <a href="#" class="flex items-center gap-2 px-4 py-2 text-sm text-slate-700 hover:bg-slate-100 cursor-pointer">
+              Settings
+            </a>
+            <hr class="my-1 border-slate-200">
+            <button
+              class="w-full flex items-center gap-2 px-4 py-2 text-sm text-red-600 hover:bg-red-50 cursor-pointer"
+              @click="logout"
+            >
+              Logout
+            </button>
+          </div>
+        </BaseDropdown>
+      </div>
+    </div>
 
+    <!-- Desktop Header -->
+    <div class="hidden lg:flex h-14 px-6 items-center justify-between">
+      <!-- Left Section -->
+      <div class="flex items-center gap-4">
         <!-- New Feature Banner -->
-        <div class="hidden sm:flex items-center gap-2 px-1 py-1 bg-slate-900 rounded-full">
+        <div class="flex items-center gap-2 px-1 py-1 bg-slate-900 rounded-full">
           <span class="px-2.5 py-1 bg-blue-500 text-white text-xs font-medium rounded-full flex items-center gap-1">
             New Feature
             <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -87,7 +135,7 @@ function toggleMobileSidebar() {
                 :alt="userName"
                 class="w-8 h-8 rounded-full object-cover"
               >
-              <div class="hidden sm:block text-left">
+              <div class="text-left">
                 <p class="text-sm font-medium text-slate-900 leading-tight">{{ userName }}</p>
                 <p class="text-xs text-slate-500">Manager</p>
               </div>
