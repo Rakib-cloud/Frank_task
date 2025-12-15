@@ -1,0 +1,12 @@
+services:
+  # JSON Server API
+  - type: web
+    name: frank-task-api
+    runtime: node
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+    autoDeploy: true
+    healthCheckPath: /api/stats
